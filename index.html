@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>CRUD</title>
+
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+
+</head>
+
+<body>
+
+<nav>
+	<ul>
+		
+		<li><a href="index.html">Ingresar</a></li>
+		<li><a href="registrar.html">Registrar</a></li>
+		<li><a href="empleados.html">Empleados</a></li>
+		<li><a href="salir.html">Salir</a></li>
+
+	</ul>
+</nav>
+<script>
+    function soloLetras(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key).toLowerCase();
+       letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+</script>
+
+<script>
+    function soloNumeros(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key).toLowerCase();
+       numeros = "0123456789";
+       especiales = "44-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(numeros.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+</script>
+
+<section>
+
+	<br>
+	<h1>INGRESAR</h1>
+
+	<form method="post" action="">
+		
+		<input type="text" placeholder="Usuario" name="usuario" id='usuario' onkeypress="return soloLetras(event)">
+
+		<input type="password" placeholder="Contraseña" name="clave" id="contraseña" onkeypress="return soloNumeros(event)">
+
+		<input  type="submit" onclick='return enviarFormulario()' value="Ingresar">
+
+	</form>
+
+	<div id='error'></div>
+	<script src='js/ingresar.js'></script>
+</section>
+	
+
+	<!-- Yo decidi realizar mis validaciones utilizando las funciones onclick onkeypress onkeyup de javascript para validar que los datos que el usuario ingresa en cada campo sean correctos-->
+</body>
+
+</html>
